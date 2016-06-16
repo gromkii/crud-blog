@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit {{ user.username }}</title>
+  </head>
+  <body>
+    <form action="/users/{{ user.id }}?_method=PUT" method="POST">
+      <div>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" value="{{ user.name }}">
+      </div>
+      <div>
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" value="{{ user.username }}">
+      </div>
+      <div>
+        <label for="avatar_url">Avatar Url</label>
+        <input type="text" id="avatar_url" name="avatar_url" value="{{ user.avatar_url }}">
+      </div>
+
+      <input type="submit" value="Submit">
+    </form>
+
+    <h4><a href="/users/{{ user.id }}">Go Back</a></h4>
+  </body>
+</html>

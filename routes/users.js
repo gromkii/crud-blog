@@ -44,6 +44,19 @@ router.route('/:id')
       .then( user => {
         res.render('users/show', { user : user.toJSON() });
       });
+  })
+  // Edit user by id.
+  .put( (req, res) => {
+    var id   = req.params.id,
+        user = req.body;
+    new User({
+      name : user.name,
+      username : user.username,
+      avatar_url : user.avatar_url
+    }).save({ update : true })
+      .then( () => {
+        res.redirect(`/author/${id}`);
+      });
   });
 
 router.route('/:id/edit')
