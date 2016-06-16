@@ -42,3 +42,5 @@ router.route('/:id/edit')
         res.render('user/edit', ({ user: user }));
       });
   });
+
+module.exports = router;
