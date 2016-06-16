@@ -45,7 +45,7 @@ router.route('/:id')
         res.render('users/show', { user : user.toJSON() });
       });
   })
-  // Edit user by id.
+  // Update user by id.
   .put( (req, res) => {
     var id   = req.params.id,
         user = req.body;
