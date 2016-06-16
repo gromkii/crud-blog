@@ -2,6 +2,7 @@ var express = require('express'),
     router  = express.Router(),
     User    = require('../models/User');
 
+
 router.route('/')
   // Show all users.
   .get( (req, res) => {

@@ -4,6 +4,7 @@ var bodyParser     = require('body-parser'),
     handlebars     = require('handlebars'),
     bookshelf      = require('./db/bookshelf'),
     users          = require('./routes/users'),
+    posts          = require('./routes/posts'),
     methodOverride = require('method-override'),
     app            = express();
 
@@ -16,6 +17,7 @@ app.use(bodyParser.urlencoded({ extended : false }));
 app.use(methodOverride('_method'));
 
 app.use('/users', users);
+app.use('/posts', posts);
 
 
 

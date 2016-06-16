@@ -1,17 +1,19 @@
 var express = require('express'),
     router  = express.Router(),
-    Post    = require('../models/Post');
+    Post    = require('../models/post'),
+    User    = require('../models/user');
 
 router.route('/')
   .get( (req, res) => {
     Post
-      .orderBy('id')
-      .fetchAll()
-      .then( (posts) => {
-        res.render('posts/index', { posts: posts });
-      });
+      .fetchAll({withRelated: ['users']})
+      .then( results => {
+        var posts = results.toJSON();
 
+        res.json(posts);
+        // res.render('posts/index', {posts: posts, users: posts.users});
+      });
   });
 
 
-module.exports = rouer;
+module.exports = router;
