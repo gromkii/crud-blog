@@ -6,14 +6,30 @@ router.route('/')
   // Show all users.
   .get( (req, res) => {
     new User()
+      .orderBy('id')
       .fetchAll()
       .then( users => {
-        res.render('users/users', { users: users });
+        res.render('users/users', { users: users.toJSON() });
       });
-  }); // Delete semicolon to add more http methods.
+  })
+
+  // Add new user.
+  .post( (req, res) => {
+    var user = req.body;
+
+    new User({
+      name: user.name,
+      username: user.username,
+      avatar_url: user.avatar_url
+    })
+      .save()
+      .then( () => {
+        res.redirect('/users');
+      });
+  });
 
 router.route('/new')
-  // Make a new user.
+  // Route to new user page.
   .get( (req, res) => {
     res.render('users/new');
   });
