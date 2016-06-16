@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Add New User</title>
+  </head>
+  <body>
+    <form action="/users/" method="POST">
+      <div>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" value="">
+      </div>
+      <div>
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" value="">
+      </div>
+      <div>
+        <label for="avatar_url">Avatar Url</label>
+        <input type="text" id="avatar_url" name="avatar_url" value="">
+      </div>
+
+      <input type="submit" value="Add User">
+    </form>
+  </body>
+</html>
