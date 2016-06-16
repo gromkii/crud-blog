@@ -19,6 +19,6 @@ app.use('/users', users);
 
 
 
-app.listen(process.env.IP || 3000, process.env.HOST || 'localhost', () => {
+app.listen(process.env.PORT || 3000, process.env.IP || 'localhost', () => {
   console.log('Server is listening');
 });
