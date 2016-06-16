@@ -6,6 +6,9 @@ var bodyParser = require('body-parser'),
     users      = require('./routes/users'),
     app        = express();
 
+app.set('view engine', 'hbs');
+app.set('views', __dirname + '/views');
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended : false }));
 

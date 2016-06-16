@@ -5,8 +5,7 @@ var express = require('express'),
 router.route('/')
   // Show all users.
   .get( (req, res) => {
-    User()
-      .collection()
+    new User()
       .fetchAll()
       .then( users => {
         res.render('users/users', { users: users });
