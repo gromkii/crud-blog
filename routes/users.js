@@ -39,10 +39,10 @@ router.route('/:id')
   .get( (req, res) => {
     var id = req.params.id;
 
-    User({ id: id})
+    new User({ id : id })
       .fetch()
       .then( user => {
-        res.render('users/show');
+        res.render('users/show', { user : user.toJSON() });
       });
   });
 

@@ -8,7 +8,7 @@
     <h2>Users</h2>
     <ul>
       {{#each users}}
-      <li> {{ this.username }} </li>
+      <li><a href="/users/{{ this.id }}">{{ this.username }}</a></li>
       {{/each}}
     </ul>
 
