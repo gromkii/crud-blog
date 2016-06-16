@@ -49,13 +49,14 @@ router.route('/:id')
   .put( (req, res) => {
     var id   = req.params.id,
         user = req.body;
-    new User({
-      name : user.name,
-      username : user.username,
-      avatar_url : user.avatar_url
-    }).save({ update : true })
-      .then( () => {
-        res.redirect(`/author/${id}`);
+    User
+      .where({ id : id })
+      .save ({
+        name: user.name,
+        username: user.username,
+        avatar_url: user.avatar_url
+      }, {patch: true}).then( () => {
+        res.redirect(`/users/${id}`);
       });
   });
 
@@ -64,10 +65,11 @@ router.route('/:id/edit')
   .get( (req, res) => {
     var id = req.params.id;
 
-    User({ id: id })
+    User
+      .where({ id : id })
       .fetch()
       .then( user => {
-        res.render('user/edit', ({ user: user }));
+        res.render('users/edit', ({ user: user.toJSON() }));
       });
   });
 
