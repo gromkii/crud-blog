@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Add New Comment</title>
+  </head>
+  <body>
+    <h3>New Comment</h3>
+    <form action="/posts/{{ post: id }}" method="POST">
+      <div>
+          <label for="comment">Comment on "{{ post.title }}""</label>
+          <input type="text" id="comment" name="comment">
+      </div>
+      <div>
+        <select name="user_id">
+          {{#each users}}
+            <option value="{{ this.id }}">{{ this.username }}</option>
+          {{/each}}
+      </div>
+
+      <input type="submit" value="Add Comment">
+    </form>
+
+    <a href="/posts/{{ post.id }}">Go back.</a>
+  </body>
+</html>

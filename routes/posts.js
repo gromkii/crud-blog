@@ -74,7 +74,7 @@ router.route('/:post_id')
   .put( (req, res) => {
 
   })
-  
+
   // Remove a post.
   .delete( (req, res) => {
 
@@ -86,8 +86,21 @@ router.route('/:post_id/comment')
   .get( (req, res) => {
     var post_id = req.params.post_id;
 
-    //Get post by ID, fetchall users.
-  });
+    new Post({ id: post_id })
+      .fetch()
+      .then( postResult => {
+        var post = postResult.toJSON();
+
+        // Get list of users.
+        new User()
+          .fetchAll()
+          .then( userResults => {
+            var users = userResults.toJSON();
+
+            // eval(locus);
+            res.render('posts/comment', { post: postResult.toJSON(), users: users});
+          })
+      })  });
 
 
 module.exports = router;
