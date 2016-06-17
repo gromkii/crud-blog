@@ -25,6 +25,7 @@ router.route('/')
     })
       .save()
       .then( () => {
+        
         res.redirect('/users');
       });
   });

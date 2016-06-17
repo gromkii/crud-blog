@@ -18,13 +18,13 @@ router.route('/')
   .post( (req, res) => {
     var post = req.body;
 
-    Post({
-      post:post.user_id,
-      post:post.title,
+    new Post({
+      user_id:post.user_id,
+      title:post.title,
       post:post.post
-    },'id')
+    })
       .save()
-      .then( () => {
+      .then( (model) => {
         res.redirect('/posts');
       })
   })
@@ -36,7 +36,7 @@ router.route('/')
 router.route('/new')
 // Show new post page, list available users to post as. (Can't auth yet, #rip)
 .get( (req, res) => {
-  User
+  new User()
   .fetchAll()
   .then( results => {
     var users = results.toJSON();
@@ -72,6 +72,11 @@ router.route('/:post_id')
 
   // Edit a post's content.
   .put( (req, res) => {
+
+  })
+  
+  // Remove a post.
+  .delete( (req, res) => {
 
   });
 

@@ -6,22 +6,24 @@
   </head>
   <body>
     <h3>Add new post.</h3>
-    <form action="/posts" action="POST">
-      <div>
-        <!-- Assume that users exist in the db. -->
-        <select id="user_id" name="user_id">
-          {{#each users}}
-          <options value="{{ this.id }}">{{ this.username }}</options>
-          {{/each}}
-        </select>
-      </div>
+    <form action="/posts" method="POST">
       <div>
         <label for="title">Title</label>
-        <input type="text" name="title" value="">
+        <input type="text" name="title" id="title" value="">
       </div>
       <div>
-        <lavel for="post">Post</label>
-          <textarea name="post"></textarea>
+        <label for="post">Post</label>
+          <textarea name="post" id="post" value=""></textarea>
+      </div>
+
+      <div>
+        <!-- Assume that users exist in the db. -->
+        <label for="user_id">User</label>
+        <select id="user_id" name="user_id">
+          {{#each users}}
+          <option value="{{ this.id }}">{{ this.username }}</option>
+          {{/each}}
+        </select>
       </div>
 
       <input type="submit" value="Submit Post">
