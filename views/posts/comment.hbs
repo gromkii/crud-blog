@@ -5,10 +5,10 @@
     <title>Add New Comment</title>
   </head>
   <body>
-    <h3>New Comment</h3>
-    <form action="/posts/{{ post: id }}" method="POST">
+    <h3>New Comment on {{ post.title }}</h3>
+    <form action="/posts/{{ post.id }}" method="POST">
       <div>
-          <label for="comment">Comment on "{{ post.title }}""</label>
+          <label for="comment">Comment</label>
           <input type="text" id="comment" name="comment">
       </div>
       <div>

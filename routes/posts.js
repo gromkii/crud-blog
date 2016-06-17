@@ -83,24 +83,20 @@ router.route('/:post_id')
 
 router.route('/:post_id/comment')
   //Show new comment page, and list available users to post as.
+
+  //This shit is not working yet.
   .get( (req, res) => {
     var post_id = req.params.post_id;
 
-    new Post({ id: post_id })
-      .fetch()
-      .then( postResult => {
-        var post = postResult.toJSON();
+    User.fetchAll()
+      .then( users => {
+        new Post().fetch({ id: post_id })
+          .then ( post => {
+            res.render('posts/comment', { users: users.toJSON(), post: post.toJSON() });
+          });
+      });
 
-        // Get list of users.
-        new User()
-          .fetchAll()
-          .then( userResults => {
-            var users = userResults.toJSON();
-
-            // eval(locus);
-            res.render('posts/comment', { post: postResult.toJSON(), users: users});
-          })
-      })  });
+  });
 
 
 module.exports = router;
