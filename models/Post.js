@@ -1,6 +1,6 @@
 var bookshelf = require('../db/bookshelf');
-var Comments = require('./comment'),
-    User     = require('./user');
+var Comments = require('./Comment'),
+    User     = require('./User');
 
 var Post = bookshelf.Model.extend({
   tableName: 'posts',
