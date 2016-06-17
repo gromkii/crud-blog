@@ -27,7 +27,7 @@ module.exports = {
 
   production: {
     client: 'pg',
-    connection: 'postgres://fdxsllwzegmydp:lgB_UeU0N-8M1SePpUNwE3qPSy@ec2-50-19-239-232.compute-1.amazonaws.com:5432/da4qu166j2ibkd'
+    connection: process.env.DATABASE_URL
   }
 
 };
