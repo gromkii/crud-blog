@@ -18,11 +18,11 @@ app.use(bodyParser.urlencoded({ extended : false }));
 
 app.use(methodOverride('_method'));
 
-app.use('/users', users);
 app.use('/posts', posts);
+app.use('/users', users);
 
 app.get('/', (req, res) =>{
-  res.send('Okay.');
+  res.redirect('/users');
 });
 
 
@@ -30,5 +30,3 @@ app.get('/', (req, res) =>{
 app.listen(process.env.PORT || 3000, () => {
   console.log('Server is listening.');
 });
-
-module.exports = app;
