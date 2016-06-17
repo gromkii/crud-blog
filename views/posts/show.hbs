@@ -9,8 +9,11 @@
     <p>{{ post.post }}</p>
 
     {{#if post.comments.length}}
-      {{#each post.comments}}
-        <h4>Comments</h4>
+
+      <h4>User Comments</h4>
+
+      {{#each comments}}
+        <h5>{{ this.users.username}}</h5>
         <p> {{ this.comment }} </p>
       {{/each}}
     {{/if}}

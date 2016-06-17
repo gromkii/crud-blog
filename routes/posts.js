@@ -21,15 +21,16 @@ router.route('/:post_id')
       .where('id',id)
       .fetch({withRelated: ['users', 'comments']})
       .then( results => {
-        var post = results.toJSON(),
-            userComment = results.related('comments').fetch({withRelated:['users']})
-            .then( commentResult => {
-              eval(locus);
-            });
+        var post = results.toJSON()
+            comments = results.related('comments')
+              .fetch({withRelated:['users']})
+              .then( commentResult => {
+                commentsObject = commentResult.toJSON();
+                console.log(commentsObject);
+                res.render('posts/show', {post:post, comments:commentsObject})
 
-
-        // res.render('posts/show', { post : post });
-      })
+              });
+      });
   });
 
 
