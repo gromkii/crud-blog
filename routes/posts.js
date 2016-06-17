@@ -98,5 +98,23 @@ router.route('/:post_id/comment')
 
   });
 
+router.route('/:post_id')
+  .get( (req, res) => {
+    var id = req.params.post_id;
+    Post
+      .where('id',id)
+      .fetch({withRelated: ['users', 'comments']})
+      .then( results => {
+        var post = results.toJSON(),
+            userComment = results.related('comments').fetch({withRelated:['users']})
+            .then( commentResult => {
+              eval(locus);
+            });
+
+
+        // res.render('posts/show', { post : post });
+      })
+  });
+
 
 module.exports = router;

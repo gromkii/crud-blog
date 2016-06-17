@@ -14,12 +14,17 @@
 
       {{#each comments}}
         <h5>{{ this.users.username}}</h5>
+
+      {{#each post.comments}}
+        <h4>Comments</h4>
+
         <p> {{ this.comment }} </p>
       {{/each}}
     {{/if}}
 
 
     <a href="/posts/{{ post.id }}/comment">Post new comment.</a>
+
     <a href="/posts">Go Back</a>
   </body>
 </html>
