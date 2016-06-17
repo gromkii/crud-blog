@@ -1,7 +1,7 @@
 var express = require('express'),
     router  = express.Router(),
-    Post    = require('../models/post'),
-    User    = require('../models/user');
+    Post    = require('../models/Post'),
+    User    = require('../models/User');
 
 router.route('/')
   // Show indexed posts, associated users, and content.
