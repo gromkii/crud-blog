@@ -1,5 +1,5 @@
 var bookshelf = require('../db/bookshelf'),
-    User      = require('./user');
+    User      = require('./User');
 
 var Comment = bookshelf.Model.extend({
   tableName: 'comments',

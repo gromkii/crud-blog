@@ -1,5 +1,5 @@
 var bookshelf = require('../db/bookshelf');
-var Post = require('./post')
+var Post = require('./Post');
 
 var User = bookshelf.Model.extend({
   tableName: 'users',
