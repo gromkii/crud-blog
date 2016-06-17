@@ -11,6 +11,8 @@ var bodyParser     = require('body-parser'),
 app.set('view engine', 'hbs');
 app.set('views', __dirname + '/views');
 
+app.set('port', (process_env_PORT || 3000))
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended : false }));
 
@@ -25,6 +27,6 @@ app.get('/', (req, res) =>{
 
 
 
-app.listen(process.env.PORT || 3000, () => {
+app.listen(app.get('port'), () => {
   console.log('Server is listening.');
 });
