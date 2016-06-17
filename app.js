@@ -8,10 +8,10 @@ var bodyParser     = require('body-parser'),
     methodOverride = require('method-override'),
     app            = express();
 
+
+app.set('port', process.env.PORT || 3000);
 app.set('view engine', 'hbs');
 app.set('views', __dirname + '/views');
-
-app.set('port', (process_env_PORT || 3000))
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended : false }));
@@ -23,10 +23,10 @@ app.use('/posts', posts);
 
 app.get('/', (req, res) =>{
   res.send('Okay.');
-})
+});
 
 
 
-app.listen(app.get('port'), () => {
+app.listen('port', () => {
   console.log('Server is listening.');
 });
