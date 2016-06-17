@@ -54,15 +54,16 @@ router.route('/:post_id')
       .fetch({withRelated: ['users', 'comments']})
       .then( results => {
         var post = results.toJSON()
-            // After finding associated comments, find users associated with commentid.
-            comments = results.related('comments')
-              .fetch({withRelated:['users']})
-              .then( commentResult => {
-                commentsObject = commentResult.toJSON();
-                console.log(commentsObject);
-                res.render('posts/show', {post:post, comments:commentsObject})
 
-              });
+        // After finding associated comments, find users associated with commentid.
+        comments = results.related('comments')
+          .fetch({withRelated:['users']})
+          .then( commentResult => {
+            commentsObject = commentResult.toJSON();
+            console.log(commentsObject);
+            res.render('posts/show', {post:post, comments:commentsObject})
+
+          });
       });
   })
   // Post a new comment.

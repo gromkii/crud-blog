@@ -1,10 +1,10 @@
 var bookshelf = require('../db/bookshelf');
-var Posts = require('./post')
+var Post = require('./post')
 
 var User = bookshelf.Model.extend({
   tableName: 'users',
   posts: function(){
-    return this.hasMany(Posts)
+    return this.hasMany(Post)
   },
 
   //Added to allow listing of all users comments.

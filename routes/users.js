@@ -25,7 +25,7 @@ router.route('/')
     })
       .save()
       .then( () => {
-        
+
         res.redirect('/users');
       });
   });
@@ -73,6 +73,19 @@ router.route('/:id/edit')
       .then( user => {
         res.render('users/edit', ({ user: user.toJSON() }));
       });
+  });
+
+router.route('/:id/posts')
+  .get( (req, res) => {
+    var id = req.params.id;
+
+    User
+      .where('id', id)
+      .fetch({ withRelated : ['posts'] })
+      .then( results => {
+        var userPosts = results.toJSON();
+        res.render('users/posts', { user: userPosts, posts: userPosts.posts });
+      })
   });
 
 module.exports = router;
