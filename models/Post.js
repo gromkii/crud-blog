@@ -1,14 +1,15 @@
 var bookshelf = require('../db/bookshelf');
-var Comments = require('./Comment'),
-    User     = require('./User');
+var User = require('./User');
+var Comments = require('./Comment');
 
 var Post = bookshelf.Model.extend({
   tableName: 'posts',
   comments: function(){
     return this.hasMany(Comments)
   },
-  users: function(){
-    return this.belongsTo(User)
+  user: function(){
+    console.log('user', User);
+    return this.belongsTo(User, 'user')
   }
 })
 
