@@ -1,16 +1,18 @@
 var express = require('express'),
     router  = express.Router(),
     Post    = require('../models/Post'),
-    User    = require('../models/User');
+    User    = require('../models/User'),
+    Comment = require('../models/Comment');
 
 router.route('/')
   // Show indexed posts, associated users, and content.
   .get( (req, res) => {
-    new Post().related('user').fetch().then( results => {
-      var posts = results.toJSON();
-
-      res.render('post/index', { posts: posts});
-    });
+    Post
+      .fetchAll({ withRelated: ['user']})
+      .then( results => {
+        var posts = results.toJSON();
+        res.render('posts/index', { posts: posts });
+      })
   })
   //Post a new blog post.
   .post( (req, res) => {

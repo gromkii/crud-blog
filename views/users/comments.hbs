@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{ user.username }}</title>
+  </head>
+  <body>
+    {{#if user.comments.length}}
+
+      <ul>
+        {{#each user.comments}}
+        <li>{{ this.comment }}</li>
+        {{/each}}
+      </ul>
+
+    {{else}}
+
+      <h3>User has no comments.</h3>
+
+    {{/if}}
+
+    <h4><a href="/users/{{ user.id }}">Go Back</a></h4>
+  </body>
+</html>

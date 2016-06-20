@@ -1,19 +1,20 @@
 var bookshelf = require('../db/bookshelf');
-var Post = require('./Post');
-var Comment = require('./Comment');
+// var Post = require('./Post');
+// var Comment = require('./Comment');
 
-bookshelf.plugin('registry');
+require('./Post');
+require('./Comment')
 
 var User = bookshelf.Model.extend({
   tableName: 'users',
   posts: function(){
-    return this.hasMany(Post, 'user_id')
+    return this.hasMany('Post')
   },
 
   //Added to allow listing of all users comments.
   comments: function(){
-    return this.hasMany(Comment)
+    return this.hasMany('Comment')
   }
 })
 
-module.exports = User;
+module.exports = bookshelf.model('User', User);

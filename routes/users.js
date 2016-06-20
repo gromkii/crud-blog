@@ -88,4 +88,18 @@ router.route('/:id/posts')
       })
   });
 
+router.route('/:id/comments')
+  .get( (req, res) => {
+    var id = req.params.id;
+
+    User
+      .where('id', id)
+      .fetch({ withRelated : ['comments'] })
+      .then( results => {
+        var user = results.toJSON();
+
+        res.render('users/comments', { user: user });
+      });
+  });
+
 module.exports = router;

@@ -1,15 +1,17 @@
 var bookshelf = require('../db/bookshelf');
-var User = require('./User.js');
-var Comment = require('./Comment');
+
+// Imports bookshelf models so they actually work.
+require('./User');
+require('./Comment')
 
 var Post = bookshelf.Model.extend({
   tableName: 'posts',
   comments: function(){
-    return this.hasMany(Comment);
+    return this.hasMany('Comment');
   },
   user: function(){
-    return this.belongsTo(User, 'user_id');
+    return this.belongsTo('User');
   }
 })
 
-module.exports = Post;
+module.exports = bookshelf.model('Post', Post);

@@ -15,7 +15,7 @@
       <tbody>
         {{#each posts}}
           <tr>
-            <td><a href="/users/{{ this.users.id }}">{{ this.users.username }}</a></td>
+            <td><a href="/users/{{ this.user.id }}">{{ this.user.username }}</a></td>
             <td><a href="/posts/{{ this.id }}">{{ this.title}}</a></td>
             <td>{{ this.post }}</td>
           </tr>
@@ -23,6 +23,8 @@
       </tbody>
     </table>
 
-    <a href="/posts/new">Make new Post.</a>
+    <h4><a href="/posts/new">Make new Post.</a></h4>
+    <h4><a href="/users">Return to Users</a></h4>
+
   </body>
 </html>
