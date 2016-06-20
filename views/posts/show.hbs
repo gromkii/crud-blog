@@ -5,15 +5,15 @@
     <title>{{ post.title }}</title>
   </head>
   <body>
-    <h3>{{ post.title }} - {{ post.users.username }}</h3>
+    <h3>{{ post.title }} - {{ post.user.username }}</h3>
     <p>{{ post.post }}</p>
 
     {{#if post.comments.length}}
 
       <h4>User Comments</h4>
 
-      {{#each comments}}
-        <h5>{{ this.users.username}}</h5>
+      {{#each post.comments}}
+        <h5>{{ this.user.username}}</h5>
 
       {{#each post.comments}}
         <h4>Comments</h4>

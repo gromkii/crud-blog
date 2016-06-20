@@ -50,20 +50,12 @@ router.route('/:post_id')
   .get( (req, res) => {
     var id = req.params.post_id;
     Post
-      .where('id',id)
-      .fetch()
+      .where('id', id)
+      .fetch({ withRelated : ['user', 'comments']})
       .then( results => {
-        var post = results.toJSON()
+        var post = results.toJSON();
 
-        // After finding associated comments, find users associated with commentid.
-        comments = results.related('comments')
-          .fetch({withRelated:['users']})
-          .then( commentResult => {
-            commentsObject = commentResult.toJSON();
-            console.log(commentsObject);
-            res.render('posts/show', {post:post, comments:commentsObject})
-
-          });
+        res.render('posts/show', { post: post})
       });
   })
   // Post a new comment.
