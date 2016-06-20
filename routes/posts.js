@@ -6,15 +6,13 @@ var express = require('express'),
 router.route('/')
   // Show indexed posts, associated users, and content.
   .get( (req, res) => {
-    console.log(User);
     Post
-    .fetchAll({withRelated:['user']})
-    .then( results => {
-      var posts = results.toJSON();
-      eval(locus);
-
-      res.render('posts/index', {posts: posts});
-    });
+      // .fetchAll({withRelated:['user']})
+      .fetchAll()
+      .then( results => {
+        var posts = results.toJSON();
+        res.render('posts/index', {posts: posts})
+      });
   })
   //Post a new blog post.
   .post( (req, res) => {
@@ -53,7 +51,7 @@ router.route('/:post_id')
     var id = req.params.post_id;
     Post
       .where('id',id)
-      .fetch({withRelated: ['users', 'comments']})
+      .fetch()
       .then( results => {
         var post = results.toJSON()
 
@@ -106,7 +104,7 @@ router.route('/:post_id')
     var id = req.params.post_id;
     Post
       .where('id',id)
-      .fetch({withRelated: ['users', 'comments']})
+      .fetch({withRelated: ['user', 'comments']})
       .then( results => {
         var post = results.toJSON(),
             userComment = results.related('comments').fetch({withRelated:['users']})

@@ -8,8 +8,7 @@ var Post = bookshelf.Model.extend({
     return this.hasMany(Comments)
   },
   user: function(){
-    console.log('user', User);
-    return this.belongsTo(User, 'user')
+    return this.belongsTo(User);
   }
 })
 
