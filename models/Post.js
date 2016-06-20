@@ -1,5 +1,5 @@
 var bookshelf = require('../db/bookshelf');
-var User = require('./User');
+var User = require('./User.js');
 var Comment = require('./Comment');
 
 var Post = bookshelf.Model.extend({
@@ -8,7 +8,7 @@ var Post = bookshelf.Model.extend({
     return this.hasMany(Comment);
   },
   user: function(){
-    return this.belongsTo(User);
+    return this.belongsTo(User, 'user_id');
   }
 })
 

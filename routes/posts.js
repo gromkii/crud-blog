@@ -6,13 +6,11 @@ var express = require('express'),
 router.route('/')
   // Show indexed posts, associated users, and content.
   .get( (req, res) => {
-    Post
-      // .fetchAll({withRelated:['user']})
-      .fetchAll()
-      .then( results => {
-        var posts = results.toJSON();
-        res.render('posts/index', {posts: posts})
-      });
+    new Post().related('user').fetch().then( results => {
+      var posts = results.toJSON();
+
+      res.render('post/index', { posts: posts});
+    });
   })
   //Post a new blog post.
   .post( (req, res) => {

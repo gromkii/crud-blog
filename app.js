@@ -8,6 +8,7 @@ var bodyParser     = require('body-parser'),
     methodOverride = require('method-override'),
     app            = express();
 
+bookshelf.plugin('registry');
 
 app.set('port', process.env.PORT || 3000);
 app.set('view engine', 'hbs');
